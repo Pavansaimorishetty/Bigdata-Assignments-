@@ -1,0 +1,80 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String str[])
+	{
+	     System.out.println("The number of integers to be inserted in the list");
+		Scanner in = new Scanner(System.in);
+        int counter = 0;
+        int totalintegers = 0;
+        
+        int[] arrintegers = null; 
+        
+        while (in.hasNextInt()) 
+        {        	
+        	if(counter == 0 ) 
+            {
+                System.out.println("Enter integers to be inserted in the List:");
+        		totalintegers = in.nextInt();
+            	arrintegers = new int[totalintegers];
+        		counter++; 
+            	continue;
+            }
+            else
+            {
+            	arrintegers[counter-1] = in.nextInt();
+            }
+        	if (counter == (totalintegers)) 
+        	{
+             	break;
+        	}
+            counter++;        	
+		}
+        in.close();
+		findPair(arrintegers);
+	}
+	static void findPair(int[] a)
+	{
+		HashMap<Integer,String> hm=new HashMap<Integer,String>();
+		int mult = 0;
+		boolean pairfound = false;
+		for(int i=0;i<a.length;i++)
+		{
+			for(int j=0;j<a.length;j++)
+			{
+				if(a[i] == a[j])
+					continue;
+				else 
+				{
+					mult= a[i]*a[j];
+					if(hm.get(mult)==null)
+					{
+						hm.put(mult, "("+a[i]+ ", "+a[j]+")");
+					}
+					else
+					{
+						String value = hm.get(mult);
+						String valuetocheck = "("+a[j]+ ", "+a[i]+")";
+						if (value.contentEquals(valuetocheck))
+						{
+							continue;
+						}
+						else
+						{
+							System.out.println(value + " and (" + a[i]+ ", "+a[j]+")");
+							pairfound = true;
+							break;							 
+							
+						}
+					}
+				}
+				
+			}
+			if(pairfound)
+				break;
+		}
+		if(!pairfound)
+			System.out.println("No pairs found");
+	}
+}

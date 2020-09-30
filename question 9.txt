@@ -1,0 +1,26 @@
+import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.LinkedHashSet;
+public class Main
+{
+	public static void main(String[] args) {
+	    int n;
+		Scanner	scan = new Scanner(System.in);
+		LinkedList<String>list = new LinkedList<String>();
+		
+		System.out.println("Insert the size of your linkdlist");
+		n = scan.nextInt();
+		
+		System.out.println("Enter the names of your linkdlist");
+ 
+		for(int i=0; i<n; i++) {
+			
+			list.add(scan.next());
+		}
+			System.out.println("list after removing duplicates:");
+		LinkedHashSet<String> lhSetlist = new LinkedHashSet<String> (list);
+      	for(String strlist : lhSetlist){
+               System.out.println(strlist);
+}
+	}
+}

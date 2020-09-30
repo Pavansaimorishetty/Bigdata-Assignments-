@@ -1,0 +1,39 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    System.out.println("Number of integers n to be inserted in the ArrayList:");
+	    Scanner s = new Scanner(System.in);
+	    int n=s.nextInt();
+	    System.out.println("Enter integers to be included in the ArrayList:");
+        Scanner in = new Scanner(System.in);
+        int counter=1 ;
+        int value = 0;
+        ArrayList<Integer> integrslist = new ArrayList<>();
+        while (in.hasNextInt()) 
+        {
+        	value = in.nextInt();        	
+        	integrslist.add(value);
+        	if(counter == n)
+        	{
+        		break;
+        	}
+        	counter++;
+        	
+		}  
+		int i =0 , sum = integrslist.get(0) ; 
+          
+        
+        for (i = 0; i < n; i+=2) { 
+          
+            if (integrslist.get(i) % 2 == 0) { 
+                sum += integrslist.get(i); 
+            } 
+        } 
+        
+	    System.out.println("Sum of even index integers:"+sum);
+
+	}
+}

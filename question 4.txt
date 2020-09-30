@@ -1,0 +1,107 @@
+import java.util.*; 
+
+class Employee implements Comparable<Employee>
+{  
+	String name;
+	String managername;    
+	int age;  
+	Employee(String name,String managername, int age)
+	{  
+		this.name=name;
+		this.managername = managername;
+		this.age=age;  
+	}  
+	 
+	public int compareTo(Employee emp)
+	{  
+		if(!managername.equals(emp.managername))  
+		{
+			return this.managername.compareTo(emp.managername);
+		}
+		return (this.age - emp.age);  
+	}  
+} 
+public class Source
+{
+	public static void main(String args[])
+	{  
+		ArrayList<Employee> al=new ArrayList<Employee>(); 
+		Scanner in = new Scanner(System.in);
+        int counter = 0;
+        String S1 =""; 
+        int N = 0;
+        int M = 0;
+        while (in.hasNextLine()) 
+        {
+        	if(counter==0)
+        	{
+        		S1 = in.nextLine();
+        		String [] arrtemp = S1.split(" ");
+        		N = Integer.parseInt(arrtemp[0]);
+        		M = Integer.parseInt(arrtemp[1]);
+        		if(N <1 && N > 1000)
+        		{
+        			System.out.println("N should be between 1 and 1000");
+        			return;
+        		}
+        		if(M <1 && M > 10000000)
+        		{
+        			System.out.println("M should be between 1 and 10000000");
+        			return;
+        		}
+        		counter++;
+        		continue;
+        	}
+        	if(counter <= N)
+        	{
+        		S1 = in.nextLine();
+        		if(S1.length() < 1 && S1.length() >35)
+        		{
+        			System.out.println("Name should be between 1 and 35 characters");
+        			return;
+        		}
+        		al.add(new Employee(S1,S1, 0));  
+        	} 
+        	if (counter > N && counter <= (M+N))
+        	{
+        		S1 = in.nextLine();
+        		String [] arrtemp = S1.split(" ");
+        		String managername = arrtemp[0];
+        		String name = arrtemp[1];
+        		int age = Integer.parseInt(arrtemp[2]);
+        		if((managername.length() < 1 && managername.length() >35) || (name.length() < 1 && name.length() >35))
+        		{
+        			System.out.println("Name should be between 1 and 35 characters");
+        			return;
+        		}
+        		if((!managername.equals(managername.toLowerCase())) || (!name.equals(name.toLowerCase())))
+        		{
+        			System.out.println("Names should be in lower case");
+        			return;
+        		}
+        		if(age < 1 && age > 1000000)
+        		{
+        			System.out.println("Age should be between 1 and 1000000");
+        			return;
+        		}
+        		al.add(new Employee(name,managername, age));  
+        	}
+        	counter++;  
+        	if (counter > (M+N))
+        	{
+        		break;
+        	}	      	
+		}
+        in.close();
+		Collections.sort(al);  
+		for(Employee emp:al)
+		{  
+			if(emp.managername.equals(emp.name))
+			{
+				System.out.println(emp.name);
+			}
+			else
+				System.out.println(emp.name + " " + emp.age);  
+		}  
+		}  
+}  

@@ -1,0 +1,68 @@
+import java.util.Scanner;
+import java.util.*;
+
+class Node
+{
+	int data;
+	Node next;
+	Node(int data, Node next) {
+		this.data = data;
+		this.next = next;
+	}
+}
+public class Main
+{
+	public static void printList(Node head)
+	{
+		Node ptr = head;
+		while (ptr != null)
+		{
+			System.out.print(ptr.data +"  ");
+			ptr = ptr.next;
+		}
+	}
+      public static Node rearrange(Node head)
+	{
+		if (head == null || head.next == null)
+			return null;
+		Node ptr = head;
+	    	while (ptr.next.next != null) {
+			ptr = ptr.next;
+		}
+		ptr.next.next = head;
+		head = ptr.next;
+        ptr.next= null;
+		return head;
+	}
+	public static void main(String[] args)
+  	{
+  	   System.out.println("Insert the size of your linkdlist");
+	    	Scanner sc= new Scanner(System.in);
+	    	int n = sc.nextInt();
+	    System.out.println("Enter the elements of your linkdlist");	
+  	   Scanner in = new Scanner(System.in);
+        int counter = 1;
+        int value = 0;
+        LinkedList<Integer> Keys= new LinkedList<Integer>();  
+            
+        while (in.hasNextInt()) 
+        {
+        	value = in.nextInt();        	
+        	Keys.add(value);
+        	if(counter == n)
+        	{
+        		break;
+        	}
+        	counter++;
+        	
+		}      
+	    Main ma=new Main();
+	     System.out.println("Output");
+		Node head = null;
+		for (int i = n - 1; i >= 0; i--) {
+		head = new Node(Keys.get(i), head);
+		}
+		head = rearrange(head);
+	    printList(head); 
+	}
+}

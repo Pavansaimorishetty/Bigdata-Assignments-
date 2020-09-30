@@ -1,0 +1,31 @@
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter 6 numbers:");
+        Scanner in = new Scanner(System.in);
+        int counter = 1;
+        int value = 0;
+        ArrayList<Integer> integrslist = new ArrayList<>();
+        while (in.hasNextInt()) 
+        {
+        	value = in.nextInt();        	
+        	integrslist.add(value);
+        	if(counter == 6)
+        	{
+        		break;
+        	}
+        	counter++;
+        	
+		}      
+        System.out.print(integrslist.get(2) + " ");
+        integrslist.set(4, 8);
+        System.out.print(integrslist.get(4) + " ");
+        System.out.print(integrslist.indexOf(56) + " ");
+        integrslist.add(2,44);
+        System.out.print(integrslist.get(4) + " ");
+        integrslist.remove(1);
+        System.out.print(integrslist.indexOf(9) + " ");
+   }
+}

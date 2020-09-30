@@ -1,0 +1,47 @@
+
+import java.util.Scanner;
+import java.util.*;
+public class Main
+{
+    void sort(String []s, int v)   
+
+   { 
+    for (int i=1 ;i<v; i++) 
+    { 
+        String temp = s[i]; 
+        // Insert s[j] at its correct position 
+        int j = i - 1; 
+        while (j >= 0 && temp.length() < s[j].length()) 
+        { 
+            s[j+1] = s[j]; 
+            j--; 
+        } 
+        s[j+1] = temp; 
+    } 
+   
+ }
+void printArraystring(String str[], int v) 
+{ 
+    for (int i=0; i<v; i++) 
+        System.out.print(str[i]+" "); 
+} 
+  
+	public static void main(String[] args)
+	{
+	 System.out.println("Number of strings to be inserted in array");
+	Scanner sc= new Scanner(System.in);
+	int n = sc.nextInt();
+    Scanner s = new Scanner(System.in);
+    String[] array = new String[n];
+    System.out.println("Please enter names to sort");
+      for (int i = 0; i < array.length; i++)
+        {
+        array[i] = s.nextLine();
+        }
+     
+     int v = array.length;
+      Main ma=new Main();
+       ma.sort(array,v); 
+       ma.printArraystring(array, v); 
+	}
+}
